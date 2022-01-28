@@ -48,6 +48,10 @@ public struct SheetOptions {
     
     /// Experimental flag that attempts to shrink the nested presentations more each time a new sheet is presented. This must be set before any sheet is presented.
     public static var shrinkingNestedPresentingViewControllers = false
+
+    public var dismissAccessibilityLabel: String = Localize.dismissPresentation.localized
+    
+    /* These properties will be removed in an upcoming release, leaving them for now so people can transition slowly */
     
     public init() { }
     public init(pullBarHeight: CGFloat? = nil,
@@ -59,7 +63,8 @@ public struct SheetOptions {
                 useInlineMode: Bool? = nil,
                 horizontalPadding: CGFloat? = nil,
                 maxWidth: CGFloat? = nil,
-                isRubberBandEnabled: Bool? = nil) {
+                isRubberBandEnabled: Bool? = nil,
+                dismissAccessibilityLabel: String? = nil) {
         let defaultOptions = SheetOptions.default
         self.pullBarHeight = pullBarHeight ?? defaultOptions.pullBarHeight
         self.presentingViewCornerRadius = presentingViewCornerRadius ?? defaultOptions.presentingViewCornerRadius
@@ -72,6 +77,7 @@ public struct SheetOptions {
         let maxWidth = maxWidth ?? defaultOptions.maxWidth
         self.maxWidth = maxWidth == 0 ? nil : maxWidth
         self.isRubberBandEnabled = isRubberBandEnabled ?? false
+        self.dismissAccessibilityLabel = dismissAccessibilityLabel ?? defaultOptions.dismissAccessibilityLabel
     }
     
     @available(*, unavailable, message: "cornerRadius, minimumSpaceAbovePullBar, gripSize and gripColor are now properties on SheetViewController. Use them instead.")
@@ -85,7 +91,8 @@ public struct SheetOptions {
                 useFullScreenMode: Bool? = nil,
                 shrinkPresentingViewController: Bool? = nil,
                 useInlineMode: Bool? = nil,
-                minimumSpaceAbovePullBar: CGFloat? = nil) {
+                minimumSpaceAbovePullBar: CGFloat? = nil,
+                dismissAccessibilityLabel: String? = nil) {
         let defaultOptions = SheetOptions.default
         self.pullBarHeight = pullBarHeight ?? defaultOptions.pullBarHeight
         self.presentingViewCornerRadius = presentingViewCornerRadius ?? defaultOptions.presentingViewCornerRadius
@@ -94,6 +101,7 @@ public struct SheetOptions {
         self.useFullScreenMode = useFullScreenMode ?? defaultOptions.useFullScreenMode
         self.shrinkPresentingViewController = shrinkPresentingViewController ?? defaultOptions.shrinkPresentingViewController
         self.useInlineMode = useInlineMode ?? defaultOptions.useInlineMode
+        self.dismissAccessibilityLabel = dismissAccessibilityLabel ?? defaultOptions.dismissAccessibilityLabel
     }
 }
 

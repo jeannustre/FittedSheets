@@ -275,10 +275,11 @@ public class SheetViewController: UIViewController {
     private func updateAccessibility() {
         let isOverlayAccessable = !self.allowGestureThroughOverlay && (self.dismissOnOverlayTap || self.dismissOnPull)
         self.overlayTapView.isAccessibilityElement = isOverlayAccessable
+        self.overlayTapView.accessibilityLabel = options.dismissAccessibilityLabel
         
         var pullBarLabel = ""
         if !isOverlayAccessable && (self.dismissOnOverlayTap || self.dismissOnPull) {
-            pullBarLabel = Localize.dismissPresentation.localized
+            pullBarLabel = options.dismissAccessibilityLabel
         } else if self.orderedSizes.count > 1 {
             pullBarLabel = Localize.changeSizeOfPresentation.localized
         }

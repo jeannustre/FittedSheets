@@ -297,7 +297,7 @@ public class SheetContentViewController: UIViewController {
         pullBarView.isAccessibilityElement = true
         pullBarView.accessibilityIdentifier = "pull-bar"
         // This will be overriden whenever the sizes property is changed on SheetViewController
-        pullBarView.accessibilityLabel = Localize.dismissPresentation.localized
+        pullBarView.accessibilityLabel = options.dismissAccessibilityLabel
         pullBarView.accessibilityTraits = [.button]
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(pullBarTapped))
